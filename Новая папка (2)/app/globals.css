@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zinc-950: #09090b;
+
+  /* Utilities */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@layer base {
+  :root {
+    --bg: #09090b; /* zinc-950 */
+    --text: #f4f4f5; /* zinc-100 */
+    --accent: #E63946;
+    --border: rgba(39, 39, 42, 0.6); /* zinc-800/60 */
+  }
+
+  html {
+    scroll-padding-top: 64px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Grain / Noise Filter Overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -200%;
+    width: 400%;
+    height: 400%;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Geologica', sans-serif;
+    text-transform: uppercase;
+    font-variation-settings: 'wght' 700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
