@@ -1,7 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /policy
-Disallow: /offer
-Disallow: /privacy
-
-Sitemap: https://ceh-detailing.ru/sitemap.xml
